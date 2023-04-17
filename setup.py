@@ -5,7 +5,7 @@ setup(
     version='1.0',
     description='Clean browser automation based on Selenium',
     keywords='vapeum selenium browser automation efficient',
-    author='Marcus Tan',
+    author='marcustw (Marcus)',
     author_email='marcustanwei1@gmail.com',
     url='https://github.com/marcustw/vapeum',
     python_requires='>=3.10',
