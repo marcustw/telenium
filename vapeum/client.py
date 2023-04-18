@@ -6,7 +6,8 @@ from types import TracebackType
 from typing import Any, Dict, Literal, Optional, Type, Union
 from contextlib import ExitStack
 
-from selenium import webdriver
+from seleniumwire.webdriver import ChromeOptions, FirefoxOptions  # type: ignore
+from seleniumwire.webdriver import _Remote as WebDriver  # type: ignore
 
 from .chrome import ChromeLauncher  # type: ignore
 from .firefox import FirefoxLauncher  # type: ignore
@@ -31,7 +32,7 @@ class Vapeum:
         binary_location: Optional[str] = None,
         download_dir: Optional[str] = None,
         *,
-        engine_options: Optional[Union[webdriver.ChromeOptions, webdriver.FirefoxOptions]] = None,
+        engine_options: Optional[Union[ChromeOptions, FirefoxOptions]] = None,
         seleniumwire_options: Optional[Dict[str, Any]] = None,
     ) -> None:
         self._browser_launcher = ENGINE_LAUNCHER_MAPPING[engine](
@@ -44,7 +45,7 @@ class Vapeum:
         self._timeout: int = timeout
         self._exit_stack = ExitStack()
     
-    def __enter__(self) -> webdriver.Remote:
+    def __enter__(self) -> WebDriver:
         logger.info(f"Entering {self._browser_launcher.name}")
         self._browser = self._exit_stack.enter_context(self._browser_launcher)
         self._cleanup_pid: int = self._start_cleanup()

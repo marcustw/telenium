@@ -1,3 +1,6 @@
 vapeum/webdrivers/linux/chromedriver filter=lfs diff=lfs merge=lfs -text
 vapeum/webdrivers/mac/chromedriver filter=lfs diff=lfs merge=lfs -text
 vapeum/webdrivers/windows/chromedriver.exe filter=lfs diff=lfs merge=lfs -text
+vapeum/webdrivers/linux/geckodriver filter=lfs diff=lfs merge=lfs -text
+vapeum/webdrivers/mac/geckodriver filter=lfs diff=lfs merge=lfs -text
+vapeum/webdrivers/windows/geckodriver.exe filter=lfs diff=lfs merge=lfs -text

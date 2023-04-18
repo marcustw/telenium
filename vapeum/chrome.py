@@ -1,10 +1,9 @@
-from pathlib import Path
 from typing import Any, Optional, Type
 from types import TracebackType
 
-from seleniumwire.webdriver import Chrome, ChromeOptions
+from seleniumwire.webdriver import Chrome, ChromeOptions  # type: ignore
 
-from .options import get_chrome_options  # type: ignore
+from .utils.options import get_options  # type: ignore
 from .utils.system import get_canonical_os_name, is_windows  # type: ignore
 
 
@@ -17,7 +16,7 @@ class ChromeLauncher:
         custom_options: Optional[ChromeOptions] = None,
     ) -> None:
         print(f"Init {self.name}")
-        self._chrome_options = custom_options or get_chrome_options(headless, binary_location, download_dir)
+        self._chrome_options = custom_options or get_options("chrome", headless, binary_location, download_dir)
 
     def __enter__(self) -> Chrome:
         chromedriver_path = f"./webdrivers/{get_canonical_os_name()}/chromedriver{'.exe' if is_windows() else ''}"
@@ -43,11 +42,3 @@ class ChromeLauncher:
     @property
     def browser_pid(self) -> int:
         return self._chrome.service.process.pid
-    
-    @property
-    def command_executor_url(self) -> str:
-        return self._chrome.command_executor._url
-    
-    @property
-    def session_id(self) -> Optional[Any]:
-        return self._chrome.session_id
