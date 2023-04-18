@@ -11,16 +11,17 @@ class ChromeLauncher:
     def __init__(self,
         headless: bool = True,
         binary_location: Optional[str] = None,
+        driver_location: Optional[str] = None,
         download_dir: Optional[str] = None,
         *,
         custom_options: Optional[ChromeOptions] = None,
     ) -> None:
         print(f"Init {self.name}")
         self._chrome_options = custom_options or get_options("chrome", headless, binary_location, download_dir)
-
+        self._driver_location = driver_location or f"./webdrivers/{get_canonical_os_name()}/chromedriver{'.exe' if is_windows() else ''}"
+ 
     def __enter__(self) -> Chrome:
-        chromedriver_path = f"./webdrivers/{get_canonical_os_name()}/chromedriver{'.exe' if is_windows() else ''}"
-        self._chrome = Chrome(executable_path=chromedriver_path, options=self._chrome_options)
+        self._chrome = Chrome(executable_path=self._driver_location, options=self._chrome_options)
         return self._chrome
 
     def __exit__(

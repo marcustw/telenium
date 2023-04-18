@@ -30,6 +30,7 @@ class Vapeum:
         engine: Literal["chrome", "firefox"] = "chrome",
         headless: bool = True,
         binary_location: Optional[str] = None,
+        driver_location: Optional[str] = None,
         download_dir: Optional[str] = None,
         *,
         engine_options: Optional[Union[ChromeOptions, FirefoxOptions]] = None,
@@ -38,6 +39,7 @@ class Vapeum:
         self._browser_launcher = ENGINE_LAUNCHER_MAPPING[engine](
             headless,
             binary_location,
+            driver_location,
             download_dir,
             custom_options=engine_options,
         )
