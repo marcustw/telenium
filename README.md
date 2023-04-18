@@ -2,12 +2,13 @@
 
 This is a package for using selenium browser automation tool that is much easier and requires less configuration. It should fit a typical use case of browser automation required. There is also auto clean up so you won't have to worry about the cleaning up.
 
-## driver-versions
+## Driver Versions
+```
 ChromeDriver 112.0.5615.49 (bd2a7bcb881c11e8cfe3078709382934e3916914-refs/branch-heads/5615@{#936})
 geckodriver 0.33.0 (a80e5fd61076 2023-04-02 18:31 +0000)
+```
 
-
-## installing
+## Installation
 
 ```sh
 # pip
@@ -18,7 +19,7 @@ wget https://github.com/marcustw/vapeum/releases/download/v1.0.0/vapeum-1.0-py3-
 pip install vapeum-1.0-py3-none-any.whl
 ```
 
-## usage
+## Usage
 
 ```python
 from vapeum import Vapeum
