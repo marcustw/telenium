@@ -9,10 +9,10 @@ setup(
     author_email='marcustanwei1@gmail.com',
     url='https://github.com/marcustw/vapeum',
     python_requires='>=3.10',
-    packages=find_packages(exclude=['tests', 'tests.*']),
-    install_requires=['selenium=4.8.3'],
+    packages=find_packages(),
+    install_requires=['selenium==4.8.3'],
     package_data={
-        'vapeum._impl': ['webdrivers/**/*']
+        'vapeum.src': ['webdrivers/**/*']
     },
     test_suite='tests'
     )

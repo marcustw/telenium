@@ -1,0 +1,2 @@
+class FirefoxLauncher:
+    pass

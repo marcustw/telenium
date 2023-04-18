@@ -9,11 +9,21 @@ pip install vapeum
 Using vapeum
 
 ```python
-from vapeum import vapeum
+from vapeum import Vapeum
 
-if __name__ == '__main__':
-  with vapeum() as b:
-    b.get('https://icanhazip.com')
-    print(b.page_source)
+if __name__ == "__main__":
+    vapeum = Vapeum()
+    with vapeum as b:
+        b.get("https://www.google.com")
+        print(f"{b.page_source[:100]}\n")
+        for request in b.requests[:2]:
+            if request.response:
+                print(
+                    f"url = {request.url}\nstatus_code = {request.response.status_code}, "
+                    "response = {request.response.headers['Content-Type']}\n"
+                )
+        print()
+    
+    print("done")
 
 ```
