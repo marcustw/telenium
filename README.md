@@ -14,6 +14,8 @@ geckodriver 0.33.0 (a80e5fd61076 2023-04-02 18:31 +0000)
 pip install vapeum
 
 # installing using whl
+wget https://github.com/marcustw/vapeum/releases/download/v1.0.0/vapeum-1.0-py3-none-any.whl
+pip install vapeum-1.0-py3-none-any.whl
 ```
 
 ## usage
